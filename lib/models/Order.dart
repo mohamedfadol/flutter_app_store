@@ -1,5 +1,5 @@
-class Order {
+class OrderList {
   int? totalPrice;
   String? address , orderId;
-  Order({this.address,this.totalPrice,this.orderId});
+  OrderList({this.address,this.totalPrice,this.orderId});
 }

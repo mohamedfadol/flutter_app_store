@@ -14,6 +14,9 @@ class EditProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     Product product = ModalRoute.of(context)!.settings.arguments as Product;
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Products'),
+      ),
       body: Form(
         key: globalKey,
         child: ListView(

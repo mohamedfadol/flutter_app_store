@@ -10,25 +10,28 @@ class AdminHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+      ),
       backgroundColor: KmainColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(width: double.infinity,),
-          RaisedButton(onPressed: (){
+          MaterialButton(onPressed: (){
             Navigator.pushNamed(context, AddProduct.id);
           },
           child: Text("add Products"),
           ),
 
-          RaisedButton(onPressed: (){
+          MaterialButton(onPressed: (){
             Navigator.pushNamed(context, ManageProducts.id);
           },
             child: Text("Products List"),
           ),
 
-          RaisedButton(onPressed: (){
+          MaterialButton(onPressed: (){
             Navigator.pushNamed(context, OrderScreen.id);
           },
             child: Text("Orders List"),

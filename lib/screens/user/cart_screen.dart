@@ -102,7 +102,7 @@ class CartScreen extends StatelessWidget {
               return ButtonTheme(
                 minWidth: widthScreen,
                 height: heightScreen * .09,
-                child: RaisedButton(
+                child: MaterialButton(
                   color: KmainColor,
                     onPressed: (){
                         showCustomDialog(products,context);
@@ -163,7 +163,8 @@ class CartScreen extends StatelessWidget {
                   kTotallPrice: price,
                   kAddress: _address
                 }, products);
-                Scaffold.of(context).showSnackBar(SnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
                   content: Text("Orderd Successfully"),
                 ));
                 Navigator.pop(context);

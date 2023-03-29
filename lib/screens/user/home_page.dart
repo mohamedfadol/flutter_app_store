@@ -42,20 +42,18 @@ class _HomePageState extends State<HomePage> {
               fixedColor: KmainColor,
               onTap: (value) async {
                 if (value == 2) {
-                  SharedPreferences pref = await SharedPreferences.getInstance();
-                  pref.clear();
-                  await _auth.signOut();
-                  Navigator.popAndPushNamed(context, LoginScreen.id);
+                  logOutFunction();
+
                 }
                 setState(() {
                   _bottomBarIndex = value;
                 });
               },
-              items: [
+              items: const [
                 BottomNavigationBarItem(
-                    label: 'Test', icon: Icon(Icons.person)),
+                    label: 'Person', icon: Icon(Icons.person)),
                 BottomNavigationBarItem(
-                    label: 'Test', icon: Icon(Icons.shopping_cart)),
+                    label: 'MyCart', icon: Icon(Icons.shopping_cart)),
                 BottomNavigationBarItem(
                     label: 'Sign Out', icon: Icon(Icons.close)),
               ],
@@ -114,21 +112,21 @@ class _HomePageState extends State<HomePage> {
         ),
         Material(
           child: Padding(
-            padding: EdgeInsets.fromLTRB(20, 30, 20, 0),
-            child: Container(
+            padding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
+            child: SizedBox(
               height: MediaQuery.of(context).size.height * .1,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    'Discover'.toUpperCase(),
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    'M-Fadol Shop'.toUpperCase(),
+                    style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                   ),
                   GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, CartScreen.id);
                       },
-                      child: Icon(Icons.shopping_cart)
+                      child: const Icon(Icons.shopping_cart)
                   ),
                 ],
               ),
@@ -159,7 +157,7 @@ class _HomePageState extends State<HomePage> {
           products.clear();
           products = getProductByCategory(kJackets, _products);
           return GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: .8,
             ),
@@ -208,7 +206,7 @@ class _HomePageState extends State<HomePage> {
             itemCount: products.length,
           );
         }
-        return Center(child: Text("Loading ..."));
+        return const Center(child: Text("Loading ..."));
       },
     );
   }
@@ -223,5 +221,40 @@ class _HomePageState extends State<HomePage> {
     _loggedUser = await _auth.getUser();
   }
 
+
+  Future<void> logOutFunction() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Center(child: Text('Are you sure to logOut ?',style: TextStyle(color: Colors.red,fontSize: 20.0,fontWeight: FontWeight.bold))),
+          content: const Text('Will logOut form application Permanently',style: TextStyle(fontSize: 13.0,fontWeight: FontWeight.normal)),
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                  child: const Text('Yes! LogOut'),
+                  onPressed: () async {
+                    SharedPreferences pref = await SharedPreferences.getInstance();
+                    pref.clear();
+                    await _auth.signOut();
+                    Navigator.popAndPushNamed(context, LoginScreen.id);
+                  },
+                ),
+                TextButton(
+                  child: const Text('No!'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
 
 }

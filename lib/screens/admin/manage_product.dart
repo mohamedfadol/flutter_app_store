@@ -17,6 +17,9 @@ class _ManageProductsState extends State<ManageProducts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('List Of Products'),
+      ),
       body: StreamBuilder<QuerySnapshot>(
         stream: _store.loadProducts(),
         builder: (context, snapshot) {

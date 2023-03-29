@@ -121,7 +121,8 @@ class _ProductInfoState extends State<ProductInfo> {
                     height:  MediaQuery.of(context).size.height * .09,
                     child: Builder(
                       builder: (context) {
-                        return RaisedButton(onPressed: (){
+                        return MaterialButton(
+                          onPressed: (){
                           addToCart(context,product);
                         },
                           shape: RoundedRectangleBorder(

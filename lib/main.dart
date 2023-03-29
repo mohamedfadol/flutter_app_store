@@ -35,7 +35,8 @@ class MyApp extends StatelessWidget {
       future: SharedPreferences.getInstance(),
       builder: (context,snapshot){
         if (!snapshot.hasData) {
-          return MaterialApp(home: Scaffold(
+          return const MaterialApp(
+            home: Scaffold(
             body: Center(
               child: Text("loading ...."),
             ),

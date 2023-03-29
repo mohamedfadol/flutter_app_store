@@ -76,7 +76,7 @@ class OrderDetails extends StatelessWidget {
                         Expanded(
                           child: ButtonTheme(
                             buttonColor: KmainColor,
-                            child: RaisedButton(onPressed: (){},
+                            child: MaterialButton(onPressed: (){},
                             child: Text("Delete Orders")
                             ),
                           ),
@@ -85,7 +85,7 @@ class OrderDetails extends StatelessWidget {
                         Expanded(
                           child: ButtonTheme(
                             buttonColor: KmainColor,
-                            child: RaisedButton(onPressed: (){},
+                            child: MaterialButton(onPressed: (){},
                                 child: Text("Confirm Orders")
                             ),
                           ),

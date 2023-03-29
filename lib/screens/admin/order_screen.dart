@@ -18,10 +18,10 @@ class OrderScreen extends StatelessWidget {
           if (!snapshot.hasData) {
             return Text("No Orders Founded");
           } else {
-            List<Order> orders = [];
+            List<OrderList> orders = [];
             for (var doc in snapshot.data!.docs) {
               final data = doc.data() as Map<String, dynamic>;
-              orders.add(Order(
+              orders.add(OrderList(
                   orderId: doc.id,address: data[kAddress], totalPrice: data[kTotallPrice]));
             }
             return ListView.builder(

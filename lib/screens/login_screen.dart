@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     alignment: Alignment.center,
                     children: [
                       Image.asset('images/icons/buy.png'),
-                      Positioned(
+                      const Positioned(
                           bottom: 0,
                           child: Text(
                             'Buy Now',
@@ -70,7 +70,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   _email = value;
                 },
               ),
-
+              const SizedBox(
+                height: 6.0,
+              ),
+              CustomTextField(
+                hint: "Enter Your Password",
+                icon: Icons.lock,
+                onclick: (value) {
+                  _password = value;
+                },
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: Row(
@@ -80,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         unselectedWidgetColor: Colors.white,
                       ),
                       child: Checkbox(
-                        checkColor: KsecondaryColor,
+                          checkColor: KsecondaryColor,
                           activeColor: KmainColor,
                           value: keepMeLoggedIn,
                           onChanged: (value){
@@ -90,20 +99,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                       ),
                     ),
-                    Text("Remember Me",style: TextStyle(color: Colors.white),)
+                    const Text("Remember Me",style: TextStyle(color: Colors.white),)
                   ],
                 ),
               ),
 
-              CustomTextField(
-                hint: "Enter Your Password",
-                icon: Icons.lock,
-                onclick: (value) {
-                  _password = value;
-                },
-              ),
               SizedBox(
-                height: height * .04,
+                height: height * .03,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 120),
@@ -215,7 +217,8 @@ class _LoginScreenState extends State<LoginScreen> {
           }
         } else {
           modalhud.changeIsLoading(false);
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
             content: Text("not admin"),
           ));
         }
