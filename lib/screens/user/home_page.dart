@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   int _tabBarIndex = 0;
   int _bottomBarIndex = 0;
   final _store = Store();
-  List<Product> _products=[];
+  List<Product> _products = [];
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -43,7 +43,8 @@ class _HomePageState extends State<HomePage> {
               onTap: (value) async {
                 if (value == 2) {
                   logOutFunction();
-
+                } else if (value == 1) {
+                  Navigator.pushNamed(context, CartScreen.id);
                 }
                 setState(() {
                   _bottomBarIndex = value;
@@ -120,14 +121,14 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   Text(
                     'M-Fadol Shop'.toUpperCase(),
-                    style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 17, fontWeight: FontWeight.bold),
                   ),
                   GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, CartScreen.id);
                       },
-                      child: const Icon(Icons.shopping_cart)
-                  ),
+                      child: const Icon(Icons.shopping_cart)),
                 ],
               ),
             ),
@@ -164,8 +165,9 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 3),
               child: GestureDetector(
-                onTap: (){
-                  Navigator.pushNamed(context, ProductInfo.id,arguments: products[index]);
+                onTap: () {
+                  Navigator.pushNamed(context, ProductInfo.id,
+                      arguments: products[index]);
                 },
                 child: Stack(
                   children: [
@@ -221,15 +223,20 @@ class _HomePageState extends State<HomePage> {
     _loggedUser = await _auth.getUser();
   }
 
-
   Future<void> logOutFunction() async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Center(child: Text('Are you sure to logOut ?',style: TextStyle(color: Colors.red,fontSize: 20.0,fontWeight: FontWeight.bold))),
-          content: const Text('Will logOut form application Permanently',style: TextStyle(fontSize: 13.0,fontWeight: FontWeight.normal)),
+          title: const Center(
+              child: Text('Are you sure to logOut ?',
+                  style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold))),
+          content: const Text('Will logOut form application Permanently',
+              style: TextStyle(fontSize: 13.0, fontWeight: FontWeight.normal)),
           actions: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -237,7 +244,8 @@ class _HomePageState extends State<HomePage> {
                 TextButton(
                   child: const Text('Yes! LogOut'),
                   onPressed: () async {
-                    SharedPreferences pref = await SharedPreferences.getInstance();
+                    SharedPreferences pref =
+                        await SharedPreferences.getInstance();
                     pref.clear();
                     await _auth.signOut();
                     Navigator.popAndPushNamed(context, LoginScreen.id);
@@ -256,5 +264,4 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
-
 }
