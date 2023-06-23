@@ -23,7 +23,7 @@
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 19-->[androidx.core:core:1.6.0] C:\Users\tapo9\.gradle\caches\transforms-3\51a4d184cd6599afdadd7a31dda0ee15\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
 20        android:debuggable="true"
-21        android:icon="@mipmap/ic_launcher"
+21        android:icon="@mipmap/launcher_icon"
 22        android:label="app_store" >
 23        <activity
 24            android:name="com.example.app_store.MainActivity"
