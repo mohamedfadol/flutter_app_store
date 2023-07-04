@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.app_store">
+    package="com.boss.app_store">
    <application
-        android:label="app_store"
+        android:label="Fadol Store"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
-            android:name=".MainActivity"
+            android:name="com.boss.app_store.MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
